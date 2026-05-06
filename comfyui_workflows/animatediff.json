@@ -1,0 +1,408 @@
+{
+    "_comment": "AnimateDiff workflow: takes an init image and produces an animated video clip.",
+    "last_node_id": 15,
+    "last_link_id": 15,
+    "nodes": [
+        {
+            "id": 1,
+            "type": "CheckpointLoaderSimple",
+            "pos": [
+                26,
+                100
+            ],
+            "size": {
+                "0": 315,
+                "1": 98
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        1
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "CLIP",
+                    "type": "CLIP",
+                    "links": [
+                        2
+                    ],
+                    "slot_index": 1
+                },
+                {
+                    "name": "VAE",
+                    "type": "VAE",
+                    "links": [
+                        8
+                    ],
+                    "slot_index": 2
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "__SD_CHECKPOINT__"
+            ]
+        },
+        {
+            "id": 2,
+            "type": "CLIPTextEncode",
+            "pos": [
+                400,
+                50
+            ],
+            "size": {
+                "0": 425,
+                "1": 180
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 2
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        3
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "__POSITIVE_PROMPT__"
+            ]
+        },
+        {
+            "id": 3,
+            "type": "CLIPTextEncode",
+            "pos": [
+                400,
+                260
+            ],
+            "size": {
+                "0": 425,
+                "1": 180
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 2
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        4
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "__NEGATIVE_PROMPT__"
+            ]
+        },
+        {
+            "id": 10,
+            "type": "ADE_AnimateDiffLoaderWithContext",
+            "pos": [
+                26,
+                250
+            ],
+            "size": {
+                "0": 315,
+                "1": 130
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        10
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "__MOTION_MODULE__",
+                "v2",
+                "__CONTEXT_LENGTH__"
+            ]
+        },
+        {
+            "id": 11,
+            "type": "EmptyLatentImage",
+            "pos": [
+                400,
+                460
+            ],
+            "size": {
+                "0": 315,
+                "1": 106
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        5
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                512,
+                512,
+                "__FRAME_COUNT__"
+            ]
+        },
+        {
+            "id": 5,
+            "type": "KSampler",
+            "pos": [
+                860,
+                300
+            ],
+            "size": {
+                "0": 315,
+                "1": 262
+            },
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 10
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 3
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 4
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 5
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        6
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                42,
+                "euler_a",
+                "normal",
+                "__CFG_SCALE__",
+                "__STEPS__",
+                1
+            ]
+        },
+        {
+            "id": 6,
+            "type": "VAEDecode",
+            "pos": [
+                1210,
+                300
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 6
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 8
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        7
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {}
+        },
+        {
+            "id": 13,
+            "type": "VHS_VideoCombine",
+            "pos": [
+                1440,
+                300
+            ],
+            "size": {
+                "0": 315,
+                "1": 290
+            },
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 7
+                },
+                {
+                    "name": "audio",
+                    "type": "AUDIO",
+                    "link": null
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "__FPS__",
+                true,
+                "webp",
+                "__OUTPUT_PREFIX__",
+                "default"
+            ]
+        }
+    ],
+    "links": [
+        [
+            1,
+            1,
+            0,
+            10,
+            0,
+            "MODEL"
+        ],
+        [
+            2,
+            1,
+            1,
+            2,
+            0,
+            "CLIP"
+        ],
+        [
+            2,
+            1,
+            1,
+            3,
+            0,
+            "CLIP"
+        ],
+        [
+            3,
+            2,
+            0,
+            5,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            4,
+            3,
+            0,
+            5,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            5,
+            11,
+            0,
+            5,
+            3,
+            "LATENT"
+        ],
+        [
+            6,
+            5,
+            0,
+            6,
+            0,
+            "LATENT"
+        ],
+        [
+            7,
+            6,
+            0,
+            13,
+            0,
+            "IMAGE"
+        ],
+        [
+            8,
+            1,
+            2,
+            6,
+            1,
+            "VAE"
+        ],
+        [
+            10,
+            10,
+            0,
+            5,
+            0,
+            "MODEL"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {},
+    "version": 0.4
+}

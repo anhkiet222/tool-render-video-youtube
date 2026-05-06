@@ -1,0 +1,88 @@
+# ── LLM (Ollama) ────────────────────────────────────────────────────────────
+ollama:
+  base_url: "http://localhost:11434"
+  model: "qwen2.5:7b"          # fallback: llama3.1:8b
+  temperature: 0.7
+  max_tokens: 4096
+  timeout_sec: 120
+
+# ── Stable Diffusion (ComfyUI) ──────────────────────────────────────────────
+comfyui:
+  base_url: "http://localhost:8188"   # cloud: "https://{pod_id}-8188.proxy.runpod.net"
+  api_key: ""                          # RunPod API key (để trống nếu dùng local)
+  poll_interval_sec: 5
+  timeout_sec: 1800
+  sd_checkpoint: "anything-v5-PrtRE.safetensors"
+  image_width: 512
+  image_height: 512
+  steps: 15
+  cfg_scale: 7.0
+  sampler: "euler"
+  negative_prompt: "bad anatomy, blurry, low quality, watermark, text, signature, deformed, extra limbs, ugly, western style, 3d render, realistic photo"
+
+# ── AnimateDiff ──────────────────────────────────────────────────────────────
+animatediff:
+  motion_module: "mm_sd_v15_v2.ckpt"
+  frames: 8
+  fps: 8                                # → ~1s clip per scene (looped to audio length)
+  context_length: 8
+
+# ── Voice (edge-tts) ─────────────────────────────────────────────────────────
+voice:
+  voice_id: "vi-VN-NamMinhNeural"
+  rate: "+0%"
+  pitch: "+0Hz"
+
+# ── Video Output ─────────────────────────────────────────────────────────────
+output:
+  width: 1280
+  height: 720
+  fps: 24
+  crf: 23
+  video_codec: "libx264"
+  audio_codec: "aac"
+  audio_bitrate: "192k"
+  output_dir: "output"
+  temp_dir: "temp"
+
+# ── BGM ──────────────────────────────────────────────────────────────────────
+bgm:
+  volume: 0.20          # 20% of original BGM level
+  duck_db: -12          # dB reduction during voice
+  tracks:
+    dark: "assets/music/dark_moody.mp3"
+    neutral: "assets/music/neutral_explanatory.mp3"
+    uplifting: "assets/music/uplifting_positive.mp3"
+
+# ── Section → BGM mapping ────────────────────────────────────────────────────
+section_bgm_map:
+  hook: dark
+  problem: dark
+  content: neutral
+  pattern_interrupt: neutral
+  solution: uplifting
+  cta: uplifting
+
+# ── Subtitle style (.ass) ────────────────────────────────────────────────────
+subtitle:
+  font_name: "Arial"
+  font_size: 22
+  primary_color: "&H00FFFFFF"      # white
+  outline_color: "&H00000000"      # black outline
+  shadow_color: "&H80000000"
+  bold: 0
+  outline: 2
+  shadow: 1
+  margin_v: 40
+  keyword_color: "&H0000FFFF"      # cyan for highlighted keywords
+  interrupt_color: "&H000055FF"    # orange for pattern interrupt lines
+  interrupt_font_size: 28
+
+# ── Transitions ──────────────────────────────────────────────────────────────
+transitions:
+  fade_duration: 0.3         # seconds crossfade between sections
+  pattern_interrupt_flash_duration: 0.5   # glitch flash duration in seconds
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+words_per_minute: 130         # Vietnamese speech speed estimate
+skip_visual: false            # set true to use black placeholder clips (fast test)

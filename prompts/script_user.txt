@@ -1,0 +1,3 @@
+Chủ đề video: {topic}
+
+Hãy viết kịch bản JSON hoàn chỉnh theo đúng cấu trúc đã được hướng dẫn.

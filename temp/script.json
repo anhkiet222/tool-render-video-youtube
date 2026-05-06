@@ -1,0 +1,69 @@
+{
+  "title": "Tại Sao Bạn Luôn Trễ Hoãn?",
+  "sections": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "narrator": "Chào mọi người, hôm nay mình sẽ cùng các bạn tìm hiểu một vấn đề khá phổ biến: tại sao chúng ta lại luôn trì hoãn những việc cần làm?",
+      "pattern_interrupt": null,
+      "teaser": null,
+      "scene_prompt": "A young man sitting on a chair looking at a pile of unopened letters, looking overwhelmed."
+    },
+    {
+      "id": "problem",
+      "type": "problem",
+      "narrator": "Bạn có bao giờ cảm thấy mình luôn bị cuốn theo những công việc nhỏ nhặt, rồi để những việc quan trọng cứ rớt khỏi tầm tay không? Hãy nghĩ lại xem, bạn đã từng bỏ qua những cơ hội chỉ vì cái “chắc mai sau sẽ làm” chưa?",
+      "pattern_interrupt": null,
+      "teaser": "Dưới đây là một số lý do phổ biến khiến mọi người trì hoãn. Chúng ta hãy cùng tìm hiểu.",
+      "scene_prompt": "Close-up on a young woman's face, showing frustration and stress while holding a calendar with missed appointments highlighted."
+    },
+    {
+      "id": "section1",
+      "type": "content",
+      "narrator": "Trước hết, trì hoãn có thể bắt nguồn từ việc bạn chưa rõ mục tiêu. Khi bạn không biết mình muốn gì, bạn sẽ thường xuyên để công việc lơ là, vì thế hãy đặt ra những mục tiêu cụ thể và dễ dàng đo lường được.",
+      "pattern_interrupt": "Bạn đã bao giờ tự hỏi tại sao bạn luôn trì hoãn công việc chưa?",
+      "teaser": "Nhưng còn nếu bạn biết rõ mục tiêu thì vẫn có thể bị ảnh hưởng bởi...",
+      "scene_prompt": "A young man standing in a room, looking confused and stressed while trying to organize his messy desk."
+    },
+    {
+      "id": "section2",
+      "type": "content",
+      "narrator": "Thứ hai, sự sợ hãi cũng là một nguyên nhân lớn. Bạn có bao giờ cảm thấy lo lắng khi phải đối mặt với những công việc khó khăn không? Đôi khi, chúng ta sẽ tránh né để không phải đối mặt với áp lực.",
+      "pattern_interrupt": "Đừng quá lo lắng, hãy nhớ rằng mọi thứ đều có cách giải quyết!",
+      "teaser": "Hãy xem tiếp phần sau để tìm hiểu thêm về những nguyên nhân khác.",
+      "scene_prompt": "A young woman sitting at a desk with a worried expression, holding a large assignment that looks intimidating."
+    },
+    {
+      "id": "section3",
+      "type": "content",
+      "narrator": "Thứ ba, thói quen không tốt cũng có thể khiến bạn trì hoãn công việc. Đôi khi, chúng ta đã quá quen với lối sống bận rộn và trì trệ này mà quên mất cách cải thiện.",
+      "pattern_interrupt": "Bạn cần thay đổi ngay từ bây giờ!",
+      "teaser": "Nhưng có một số giải pháp rất hiệu quả giúp bạn vượt qua tình trạng này. Hãy xem tiếp!",
+      "scene_prompt": "A young man jogging in a park, looking energetic and determined."
+    },
+    {
+      "id": "section4",
+      "type": "content",
+      "narrator": "Cuối cùng, việc thiếu tự tin cũng là một yếu tố quan trọng. Bạn có bao giờ cảm thấy không đủ giỏi để hoàn thành công việc mà bạn đã nhận không? Đôi khi, sự lo lắng về kết quả cuối cùng khiến chúng ta trì hoãn.",
+      "pattern_interrupt": "Bạn hãy tin vào bản thân mình!",
+      "teaser": null,
+      "scene_prompt": "A young woman standing in front of a mirror with a determined look on her face."
+    },
+    {
+      "id": "solution",
+      "type": "solution",
+      "narrator": "Để vượt qua tình trạng trì hoãn, bạn cần xác định rõ mục tiêu, xây dựng thói quen tốt và tự tin vào mình. Hãy bắt đầu từ những việc nhỏ nhất để tạo nên sự thay đổi.",
+      "pattern_interrupt": "Chỉ cần một bước nhỏ thôi!",
+      "teaser": null,
+      "scene_prompt": "A young man checking off tasks on a to-do list with satisfaction."
+    },
+    {
+      "id": "cta",
+      "type": "cta",
+      "narrator": "Hãy xem video tiếp theo để tìm hiểu thêm về những mẹo hữu ích giúp bạn không còn trì hoãn nữa. Đón xem nhé!",
+      "pattern_interrupt": null,
+      "teaser": null,
+      "scene_prompt": "A young woman sitting in front of a computer, typing away with determination."
+    }
+  ]
+}
